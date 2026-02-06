@@ -13,3 +13,16 @@ function createTask(taskText){
 task.push(createTask("My first task")) //insérer une tâche dans le tableau task
 task.push(createTask("My second task")) //insérer une deuxième tâche dans le tableau task
 console.log(task) //Afficher mon tableau task dans la console
+
+
+//Récupération des éléments html
+const taskForm = document.getElementById("taskForm")
+const taskInput = document.getElementById("taskInput")
+
+//On écoute la soumission du formulaire
+taskForm.addEventListener("submit", (event) => {
+    event.preventDefault()
+
+    const taskText = taskInput.value
+    console.log(taskText)
+})
