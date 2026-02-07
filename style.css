@@ -1,0 +1,63 @@
+/* Corps de la page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d9e1e4;
+    padding: 40px;
+}
+
+/* Titre centré */
+h1 {
+    text-align: center;
+}
+
+/* Formulaire : input + bouton côte à côte */
+form {
+    display: flex;              /* place les enfants en ligne */
+    justify-content: center;    /* centre horizontalement */
+    gap: 10px;                  /* espace entre input et bouton */
+    margin-bottom: 20px;
+}
+
+/* Champ texte */
+input {
+    padding: 8px;
+    font-size: 16px;
+}
+
+/* Boutons généraux */
+button {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+/* Liste : supprime les puces et centre */
+ul {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Chaque tâche */
+li {
+    background: white;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;               /* texte + bouton sur la même ligne */
+    justify-content: space-between; /* espace entre texte et bouton */
+    align-items: center;         /* centre verticalement le contenu */
+    border-radius: 4px;
+}
+
+/* Tâche terminée */
+li.done {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* Bouton ❌ dans la liste */
+li button {
+    background: none;
+    border: none;
+    font-size: 16px;
+}

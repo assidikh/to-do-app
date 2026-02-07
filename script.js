@@ -17,7 +17,7 @@ function renderTasks(){
         let li = document.createElement("li") //on crée une balise li vide
         li.textContent = tasks[i].taskDescription //on y insère la valeur de la propriété taskDescription de notre objet numéro i du tableau tasks
         if(tasks[i].done){ //Si la tâche est faite
-            li.style.textDecoration = "line-through" //On la surligne
+            li.classList.add("done") //on ajoute une classe done à notre balise li
         }
         li.addEventListener("click", () => { //Au moment du click sur cette tâche
             tasks[i].done = !tasks[i].done //On inverse la valeur de done
