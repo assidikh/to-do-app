@@ -15,11 +15,19 @@ function renderTasks(){
     for(let i=0; i<tasks.length; i++){
 
         let li = document.createElement("li") //on crée une balise li vide
-        li.textContent = tasks[i].taskDescription //on y insère la valeur de la propriété task de notre objet numéro i du tableau tasks
+        li.textContent = tasks[i].taskDescription //on y insère la valeur de la propriété taskDescription de notre objet numéro i du tableau tasks
+        if(tasks[i].done){ //Si la tâche est faite
+            li.style.textDecoration = "line-through" //On la surligne
+        }
+        li.addEventListener("click", () => { //Au moment du click sur cette tâche
+            tasks[i].done = !tasks[i].done //On inverse la valeur de done
+            renderTasks() //Et on affiche la nouvelle liste
+        })
 
         let deleteBtn = document.createElement("button") //on crée le boutton associé à la tâche numéro i
         deleteBtn.textContent = "❌"
-        deleteBtn.addEventListener("click", () => { //Au moment du click sur ce bouton
+        deleteBtn.addEventListener("click", (event) => { //Au moment du click sur ce bouton
+            event.stopPropagation() //On empêche le toggle
             tasks.splice(i, 1) //On supprime 1 tâche dont la tâche numéro i
             renderTasks() //Et on affiche la nouvelle liste des tâches
         })
