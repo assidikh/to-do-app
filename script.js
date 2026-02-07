@@ -4,18 +4,27 @@ let tasks = []
 //Fonction pour créer une nouvelle tâche
 function createTask(taskText){
     return {
-        task: taskText,
+        taskDescription: taskText,
         done: false
     }
 }
 
-//Fonction pour afficher les tâches
+//Fonction pour afficher la liste des tâches
 function renderTasks(){
     taskList.innerHTML = ""
     for(let i=0; i<tasks.length; i++){
 
         let li = document.createElement("li") //on crée une balise li vide
-        li.textContent = tasks[i].task //on insère la valeur de la propriété task de notre objet numéro i du tableau tasks
+        li.textContent = tasks[i].taskDescription //on y insère la valeur de la propriété task de notre objet numéro i du tableau tasks
+
+        let deleteBtn = document.createElement("button") //on crée le boutton associé à la tâche numéro i
+        deleteBtn.textContent = "❌"
+        deleteBtn.addEventListener("click", () => { //Au moment du click sur ce bouton
+            tasks.splice(i, 1) //On supprime 1 tâche dont la tâche numéro i
+            renderTasks() //Et on affiche la nouvelle liste des tâches
+        })
+
+        li.appendChild(deleteBtn) //on insère le bouton dans la balise li
         taskList.appendChild(li) //on insère la balise li dans la balise ul
 
     }
