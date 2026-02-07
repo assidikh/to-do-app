@@ -1,5 +1,20 @@
+//Récupération des éléments html
+const taskForm = document.getElementById("taskForm")
+const taskInput = document.getElementById("taskInput")
+const taskList = document.getElementById("taskList")
+
 //Créer le tableau de tâches
 let tasks = []
+
+// Charger depuis localStorage si disponible
+const savedTasks = localStorage.getItem("tasks")
+if (savedTasks) {
+    tasks = JSON.parse(savedTasks)
+}
+
+// Affichage initial
+renderTasks()
+
 
 //Fonction pour créer une nouvelle tâche
 function createTask(taskText){
@@ -36,15 +51,11 @@ function renderTasks(){
         taskList.appendChild(li) //on insère la balise li dans la balise ul
 
     }
+
+    //Sauvegarde ici, à la fin de renderTasks()
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-
-
-
-//Récupération des éléments html
-const taskForm = document.getElementById("taskForm")
-const taskInput = document.getElementById("taskInput")
-const taskList = document.getElementById("taskList")
 
 //On écoute la soumission du formulaire
 taskForm.addEventListener("submit", (event) => {
